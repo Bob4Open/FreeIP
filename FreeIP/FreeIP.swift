@@ -30,13 +30,11 @@ public class FreeIP: NSObject {
         case ipip = "https://myip.ipip.net/"
         case ipchaxun = "https://2021.ipchaxun.com/"
         case ip138 = "https://2021.ip138.com/"
-        case aliip = "https://ip.taobao.com/outGetIpInfo?ip=myip&accessKey=alibaba-inc"
-        case ipapi = "https://ip-api.com"
-        
+        case apnic = "https://cgi1.apnic.net/cgi-bin/my-ip.php"
         
         static var random: IPSource {
             let randomIndex = Int(arc4random_uniform(UInt32(IPSource.allCases.count)))
-            return [.testIpv6, .zxinc, .ipip, .ipchaxun, .ip138, .aliip, .ipapi][randomIndex]
+            return [.testIpv6, .zxinc, .ipip, .ipchaxun, .ip138, .apnic][randomIndex]
         }
     }
 
@@ -55,7 +53,7 @@ public class FreeIP: NSObject {
     }
 
     @objc public class func fetchPublicIP(_ timeout: TimeInterval, callback: @escaping ((String, Error?) -> Void)) {
-        if let url = URL(string: IPSource.random.rawValue) {
+        if let url = URL(string: IPSource.apnic.rawValue) {
             let config = URLSessionConfiguration.default
             config.httpAdditionalHeaders = header
             config.timeoutIntervalForRequest = timeout
