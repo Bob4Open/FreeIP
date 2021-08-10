@@ -30,10 +30,13 @@ public class FreeIP: NSObject {
         case ipip = "https://myip.ipip.net/"
         case ipchaxun = "https://2021.ipchaxun.com/"
         case ip138 = "https://2021.ip138.com/"
-
+        case aliip = "https://ip.taobao.com/outGetIpInfo?ip=myip&accessKey=alibaba-inc"
+        case ipapi = "https://ip-api.com"
+        
+        
         static var random: IPSource {
             let randomIndex = Int(arc4random_uniform(UInt32(IPSource.allCases.count)))
-            return [.testIpv6, .zxinc, .ipip, .ipchaxun, .ip138][randomIndex]
+            return [.testIpv6, .zxinc, .ipip, .ipchaxun, .ip138, .aliip, .ipapi][randomIndex]
         }
     }
 
